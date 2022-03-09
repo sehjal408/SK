@@ -1,0 +1,21 @@
+<div>
+	{% set u1=frappe.get_all('Mentee',fields=['full_name','name','roll_no'],order_by='roll_no asc') %}
+	{% set u2=frappe.get_all('Mentor',fields=['full_name','code']) %}
+
+	{% for i in u1 %}
+
+	{% if doc.mentee == i.name %}
+		{{i.roll_no}}-
+		{{i.full_name}}-
+	{% endif %}
+
+	{% endfor %}
+
+	{% for j in u2 %}
+	
+	{% if doc.mentor == j.code %}
+		{{j.full_name}}
+	{% endif %}
+	
+	{% endfor %}
+</div>
